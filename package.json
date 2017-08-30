@@ -1,0 +1,14 @@
+{
+  "name": "language-sleet",
+  "version": "0.0.0",
+  "description": "A sleet syntax highlight for the Atom editor.",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/ice/language-sleet",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}

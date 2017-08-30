@@ -1,0 +1,140 @@
+'scopeName': 'text.html.sleet'
+'name': 'Sleet'
+'fileTypes': [
+  'sleet'
+]
+'patterns': [
+  {'include': 'text.html.basic'}
+]
+'injections':
+  'R: text.html.sleet':
+    'patterns': [
+      {'include': '#comments'}
+      {'include': '#controls'}
+      {'include': '#variables'}
+    ]
+'repository':
+  'comments':
+    'begin': '{#'
+    'end': '#}'
+    'name': 'comment.block.sleet'
+  'controls':
+    'begin': '{%'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.tag.begin.sleet'
+    'end': '%}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.tag.end.sleet'
+    'patterns': [
+      {
+        'match': '\\b((?:end)?(?:if|for|while|switch|foreach)|break|else|default|case|do|as|use|set|var|as)\\b'
+        'captures':
+          '1':
+            'name': 'keyword.control.sleet'
+      }
+      {'include': '#common'}
+    ]
+  'variables':
+    'name': 'variable.other.sleet'
+    'begin': '{{'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.section.tag.begin.sleet'
+    'end': '}}'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.tag.end.sleet'
+    'patterns': [
+      {'include': '#common'}
+    ]
+  'common':
+    'patterns': [
+      {'include': '#functions'}
+      {'include': '#filters'}
+      {'include': '#constants'}
+      {'include': '#operators'}
+      {'include': '#strings'}
+    ]
+  'functions':
+    'match': '\\b(_t|partial|load|content|dump|version|get_title|get_title_separator|get_meta|text_field|password_field|hidden_field|file_field|submit_button|button|check_field|radio_field|form|text_area|image|img|link_to|a|link|script|style|meta|select|tag_html|end_tag|friendly_title|get_doc_type|(\\w+))\\b\\('
+    'captures':
+      '1':
+        'name': 'support.function.tag.sleet'
+      '2':
+        'name': 'entity.name.function.sleet'
+  'filters':
+    'match': '\\|(isset|capitalize|camelize|uncamelize|human|lower|upper|alnum|alpha|email|float|int|string|strip_repeats|e|escape|strip_special|unescape|unstrip_special)\\b'
+    'captures':
+      '1':
+        'name': 'support.function.filter.sleet'
+  'constants':
+    'patterns': [
+      {
+        'match': '(?i)(?<=[\\s\\[\\(\\{:,])(?:true|false|null)(?=[\\s\\)\\]\\}\\,])'
+        'name': 'constant.language.sleet'
+      }
+      {
+        'match': '(?<=[\\s\\[\\(\\{:,]|\\.\\.|\\*\\*)[0-9]+(?:\\.[0-9]+)?(?=[\\s\\)\\]\\}\\,]|\\.\\.|\\*\\*)'
+        'name': 'constant.numeric.sleet'
+      }
+    ]
+  'operators':
+    'patterns': [
+      {
+        'match': '(?<=\\s)(\\+|-|\\*|/|%|//)(?=\\s)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.arithmetic.sleet'
+      }
+      {
+        'match': '(?<=\\s)(=|~)(?=\\s)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.assignment.sleet'
+      }
+      {
+        'match': '(?<=\\s)(&&|\\|\\||\\^)(?=\\s)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.bitwise.sleet'
+      }
+      {
+        'match': '(?<=\\s)((?:!|=)=|<=?|>=?|i(?:s|n))(?=\\s)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.comparison.sleet'
+      }
+      {
+        'match': '(?<=\\s)(not|or|and|\\?|:)(?=\\s)'
+        'captures':
+          '1':
+            'name': 'keyword.operator.logical.sleet'
+      }
+    ]
+  'strings':
+    'patterns': [
+      {
+        'name': 'string.quoted.single.sleet'
+        'begin': "'"
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.sleet'
+        'end': "'"
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.sleet'
+      }
+      {
+        'name': 'string.quoted.double.sleet'
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.sleet'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.sleet'
+      }
+    ]

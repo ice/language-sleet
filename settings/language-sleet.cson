@@ -1,0 +1,4 @@
+'.text.html.sleet':
+  'editor':
+    'commentStart': '{#'
+    'commentEnd': '#}'
